@@ -1,23 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+
+  const [active, setActive] = useState(true)
+  const handleToggle = () => setActive(!active)
+  const handleTrue = () => setActive(true)
+  const handleFalse = () => setActive(false)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+
+      <button onClick={handleToggle}>
+        Click
+      </button>
+
+      <button onClick={handleTrue}>
+        True
+      </button>
+
+      <button onClick={handleFalse}>
+        False
+      </button>
+
+      {active.toString()}
+
     </div>
   );
 }
