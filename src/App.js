@@ -1,23 +1,29 @@
 import "./App.css";
 import { useState } from "react";
 
-function useMyHook() {
-  const [active, setActive] = useState(true);
+function useMyHook(initialState = false) {
+  const [active, setActive] = useState(initialState);
 
   const handleToggle = () => setActive(!active);
   const handleTrue = () => setActive(true);
   const handleFalse = () => setActive(false);
 
-  return {
-    active,
-    handleToggle,
+  // return {
+  //   active,
+  //   handleToggle,
+  //   handleTrue,
+  //   handleFalse,
+  // };
+  return [ active,
+    {handleToggle,
     handleTrue,
-    handleFalse,
-  };
+    handleFalse,}
+  ];
 }
 
 function ShowInfo() {
-  const { active, handleToggle } = useMyHook();
+  // const { active, handleToggle } = useMyHook(false);
+  const [ active, {handleToggle} ]  = useMyHook(false);
 
   return (
     <div>
@@ -35,7 +41,7 @@ function ShowInfo() {
 }
 
 function App() {
-  const { active, handleToggle, handleFalse } = useMyHook();
+  const [ active, {handleToggle, handleFalse, handleTrue}  ] = useMyHook();
 
   return (
     <div>
